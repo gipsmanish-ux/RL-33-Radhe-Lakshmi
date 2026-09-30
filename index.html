@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b2b52">
+<title>RL-33 | Mission LP-2030</title>
+<style>
+:root{
+  --navy:#0b2b52; --navy2:#123e70; --gold:#b78322; --gold2:#d6ad5a;
+  --cream:#fbfaf6; --white:#fff; --ink:#1c2b3a; --muted:#617083;
+  --line:#e7dcc7; --soft:#f6f0e4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--cream);color:var(--ink);line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{width:min(1080px,92%);margin:auto}
+nav{position:sticky;top:0;z-index:20;background:rgba(11,43,82,.97);color:#fff;border-bottom:1px solid rgba(255,255,255,.15)}
+.navin{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{font-family:Georgia,serif;font-size:1.45rem;letter-spacing:2px;font-weight:700}
+.brand small{display:block;font:500 .62rem Inter,sans-serif;letter-spacing:1.5px;color:#e6c47d}
+.links{display:flex;gap:20px;font-size:.88rem}
+.links a{opacity:.9}.links a:hover{color:#e9c978}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#071e39,#123e70);color:#fff;padding:82px 0 76px}
+.hero:before,.hero:after{content:"";position:absolute;border:1px solid rgba(214,173,90,.28);border-radius:50%;width:360px;height:360px}
+.hero:before{right:-150px;top:-180px}.hero:after{left:-220px;bottom:-250px}
+.hero .container{position:relative;z-index:1}
+.eyebrow{color:#e5bf70;letter-spacing:3px;text-transform:uppercase;font-size:.75rem;font-weight:700}
+h1{font:700 clamp(3.2rem,10vw,6.5rem)/.95 Georgia,serif;letter-spacing:3px;margin:13px 0}
+.hero h2{font:600 clamp(1.1rem,3vw,1.7rem) Georgia,serif;color:#f4e3bd;margin-bottom:18px}
+.hero p{max-width:700px;color:#e4ebf3;font-size:1rem}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-block;padding:11px 18px;border-radius:8px;border:1px solid #d6ad5a;font-weight:700;font-size:.9rem}
+.btn.primary{background:#d6ad5a;color:#112a47}.btn.secondary{color:#fff;background:transparent}
+section{padding:64px 0}
+.section-head{margin-bottom:30px}
+.section-head span{color:var(--gold);font-size:.75rem;letter-spacing:2px;text-transform:uppercase;font-weight:800}
+.section-head h2{font:700 2rem Georgia,serif;color:var(--navy);margin-top:4px}
+.section-head p{color:var(--muted);max-width:700px}
+.grid{display:grid;gap:18px}
+.grid.five{grid-template-columns:repeat(5,1fr)}
+.grid.three{grid-template-columns:repeat(3,1fr)}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 5px 20px rgba(26,43,58,.04)}
+.card h3{color:var(--navy);font:700 1.1rem Georgia,serif;margin:8px 0}
+.icon{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--soft);color:var(--gold);font-weight:800}
+.quote{background:var(--navy);color:#fff;border-radius:18px;padding:34px;text-align:center;box-shadow:0 10px 30px rgba(11,43,82,.12)}
+.quote p{font:italic 1.25rem Georgia,serif;max-width:800px;margin:auto}
+.quote small{display:block;color:#d6ad5a;margin-top:12px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.stat{background:#fff;padding:22px;text-align:center}
+.stat strong{display:block;color:var(--navy);font:700 1.35rem Georgia,serif}
+.stat span{font-size:.78rem;color:var(--muted)}
+.members{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.member{display:flex;gap:15px;align-items:flex-start;background:#fff;border:1px solid var(--line);padding:18px;border-radius:12px}
+.member .badge{min-width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--soft);color:var(--navy);font-weight:800}
+.member h3{font-size:1rem;color:var(--navy)}
+.member p{font-size:.82rem;color:var(--muted)}
+.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:14px;background:#fff}
+table{width:100%;border-collapse:collapse;min-width:700px}
+th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);font-size:.88rem}
+th{background:var(--navy);color:#fff;font-weight:700}
+tr:last-child td{border-bottom:0}
+.values{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.value{padding:14px 16px;border-left:3px solid var(--gold);background:#fff;border-radius:8px;border:1px solid var(--line)}
+footer{background:#071e39;color:#dfe7ef;padding:36px 0;text-align:center}
+footer strong{font:700 1.5rem Georgia,serif;color:#fff;letter-spacing:2px}
+footer p{font-size:.82rem;margin-top:8px;color:#b9c7d5}
+.top{position:fixed;right:18px;bottom:18px;width:42px;height:42px;border-radius:50%;background:var(--gold);color:#112a47;border:0;font-weight:800;cursor:pointer;display:none}
+@media(max-width:800px){
+ .links{display:none}.hero{padding:62px 0}.grid.five{grid-template-columns:repeat(2,1fr)}.grid.three{grid-template-columns:1fr}
+ .stats{grid-template-columns:repeat(2,1fr)}.members,.values{grid-template-columns:1fr}
+ section{padding:48px 0}
+}
+@media(max-width:430px){.grid.five{grid-template-columns:1fr}.hero h1{font-size:3.4rem}.stat{padding:16px 8px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container navin">
+    <a class="brand" href="#home">RL-33 <small>MISSION LP-2030</small></a>
+    <div class="links">
+      <a href="#about">About</a><a href="#foundation">Foundation</a><a href="#members">Members</a><a href="#manifesto">Manifesto</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="container">
+    <div class="eyebrow">Official Mission Group</div>
+    <h1>RL-33</h1>
+    <h2>MISSION LP-2030</h2>
+    <p>A disciplined framework built around knowledge, character, leadership, service and legacy. Different strengths. One mission.</p>
+    <div class="cta">
+      <a class="btn primary" href="#members">Meet the Members</a>
+      <a class="btn secondary" href="#manifesto">Read Manifesto</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+<div class="container">
+  <div class="section-head"><span>Who We Are</span><h2>RL-33 at a glance</h2><p>RL-33 is presented as an internal mission and leadership framework for Mission LP-2030, turning values into disciplined daily action.</p></div>
+  <div class="stats">
+    <div class="stat"><strong>15 Nov 2024</strong><span>Established</span></div>
+    <div class="stat"><strong>21 Dec 2024</strong><span>Mission Activated</span></div>
+    <div class="stat"><strong>5 Pillars</strong><span>Knowledge to Service</span></div>
+    <div class="stat"><strong>LP-2030</strong><span>Core Mission</span></div>
+  </div>
+</div>
+</section>
+
+<section id="foundation">
+<div class="container">
+  <div class="section-head"><span>Our Foundation</span><h2>Five pillars</h2></div>
+  <div class="grid five">
+    <div class="card"><div class="icon">K</div><h3>Knowledge</h3><p>Learn continuously and build exceptional understanding.</p></div>
+    <div class="card"><div class="icon">D</div><h3>Discipline</h3><p>Turn intentions into consistent daily action.</p></div>
+    <div class="card"><div class="icon">C</div><h3>Character</h3><p>Let values guide conduct before authority.</p></div>
+    <div class="card"><div class="icon">L</div><h3>Leadership</h3><p>Lead with responsibility, humility and purpose.</p></div>
+    <div class="card"><div class="icon">S</div><h3>Service</h3><p>Use growth and ability for meaningful contribution.</p></div>
+  </div>
+</div>
+</section>
+
+<section id="manifesto">
+<div class="container">
+  <div class="quote">
+    <p>“A Symbol of Patience, Courage, Discipline, Dedication, Service and Leadership.”</p>
+    <small>RL-33 MANIFESTO</small>
+  </div>
+  <div style="height:22px"></div>
+  <div class="grid three">
+    <div class="card"><h3>Our Purpose</h3><p>To build disciplined individuals with knowledge, noble character and commitment to serving society.</p></div>
+    <div class="card"><h3>Our Vision</h3><p>To lead through character before authority and develop integrity, wisdom, courage and compassion.</p></div>
+    <div class="card"><h3>Our Mission</h3><p><strong>Mission LP-2030</strong> — preparing one disciplined individual for an outstanding civil-service journey while inspiring through values and service.</p></div>
+  </div>
+</div>
+</section>
+
+<section id="members">
+<div class="container">
+  <div class="section-head"><span>Official Register</span><h2>RL-33 Members</h2><p>Each position represents a responsibility, not superiority.</p></div>
+  <div class="members">
+    <div class="member"><div class="badge">♛</div><div><h3>Shree Lakshmi Gupta — Captain</h3><p>Supreme Leader • Vision, constitutional protection, final decision-making and mission guidance.</p></div></div>
+    <div class="member"><div class="badge">♕</div><div><h3>Queen Divya — Vice Captain</h3><p>Executive Leader • Supports leadership, execution and organizational stability.</p></div></div>
+    <div class="member"><div class="badge">◆</div><div><h3>Queen Priya Gupta — Advisor</h3><p>Discipline & Performance Advisor • Planning, monitoring, accountability and execution tracking.</p></div></div>
+    <div class="member"><div class="badge">◉</div><div><h3>Queen Anshika — Advisor</h3><p>Vision & Purpose Advisor • Represents long-term purpose, character and future responsibilities.</p></div></div>
+    <div class="member"><div class="badge">♥</div><div><h3>Queen Aarushi — Soul Member</h3><p>Symbol of innocence & responsibility • Purity, discipline and emotional balance.</p></div></div>
+    <div class="member"><div class="badge">✿</div><div><h3>Queen Devika — Soul Member</h3><p>Symbol of compassion & simplicity • Kindness, patience, humility and softness.</p></div></div>
+    <div class="member"><div class="badge">★</div><div><h3>Queen Pihu — Soul Member</h3><p>Symbol of hope & resilience • Courage after setbacks, optimism and persistence.</p></div></div>
+    <div class="member"><div class="badge">✦</div><div><h3>Queen Pragya — Soul Member</h3><p>Symbol of wisdom & curiosity • Learning, thoughtful thinking and intellectual growth.</p></div></div>
+    <div class="member"><div class="badge">⬟</div><div><h3>Kanha — Core Member</h3><p>Mission Executor • Converts planning into action through discipline, consistency and continuous improvement.</p></div></div>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="container">
+  <div class="section-head"><span>Official Structure</span><h2>Leadership flow</h2></div>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Position</th><th>Member</th><th>Official Designation</th><th>Primary Responsibility</th></tr></thead>
+    <tbody>
+      <tr><td>Captain</td><td>Shree Lakshmi Gupta</td><td>Supreme Leader</td><td>Vision, constitutional protection, final decision-making, strategic leadership.</td></tr>
+      <tr><td>Vice Captain</td><td>Queen Divya</td><td>Executive Leader</td><td>Execution, coordination and organizational stability.</td></tr>
+      <tr><td>Advisor</td><td>Queen Priya Gupta</td><td>Discipline & Performance Advisor</td><td>Monitoring, planning, reports and execution tracking.</td></tr>
+      <tr><td>Advisor</td><td>Queen Anshika</td><td>Vision & Purpose Advisor</td><td>Long-term vision, purpose, character and future responsibility.</td></tr>
+      <tr><td>Core Member</td><td>Kanha</td><td>Mission Executor</td><td>Academic goals, disciplined execution and continuous improvement.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="container">
+  <div class="section-head"><span>Our Values</span><h2>Daily commitment</h2></div>
+  <div class="values">
+    <div class="value">Truth before Comfort</div><div class="value">Character before Success</div>
+    <div class="value">Discipline before Motivation</div><div class="value">Consistency before Perfection</div>
+    <div class="value">Service before Recognition</div><div class="value">Legacy before Popularity</div>
+  </div>
+  <div style="height:24px"></div>
+  <div class="quote"><p>“Become Worthy Before Becoming Successful.”</p><small>OUR MOTTO</small></div>
+</div>
+</section>
+
+<footer>
+  <div class="container">
+    <strong>RL-33</strong>
+    <p>Knowledge • Discipline • Character • Leadership • Service • Legacy</p>
+    <p>Mission LP-2030</p>
+  </div>
+</footer>
+
+<button class="top" id="top" onclick="scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+const topBtn=document.getElementById('top');
+addEventListener('scroll',()=>topBtn.style.display=scrollY>500?'grid':'none');
+</script>
+</body>
+</html>
